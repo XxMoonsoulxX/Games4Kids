@@ -16,22 +16,22 @@ public class Calculator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S)) // summa
         {
-            CalcularFn("summa");
+            CalcularFn("sum");
         }
 
         if (Input.GetKeyDown(KeyCode.R)) // vähennys
         {
-            CalcularFn("vähennys");
+            CalcularFn("reduce");
         }
 
         if (Input.GetKeyDown(KeyCode.M)) // kerto
         {
-            CalcularFn("kerto");
+            CalcularFn("multiply");
         }
 
         if (Input.GetKeyDown(KeyCode.D)) // jako
         {
-            CalcularFn("jako");
+            CalcularFn("divide");
         }
     }
 
@@ -47,22 +47,22 @@ public class Calculator : MonoBehaviour
             primeValue = tempValue;
         }
 
-        if (operation == "summa")
+        if (operation == "sum")
         {
             finalAnswer = primeValue + secondValue;
         }
 
-        if (operation == "vähennys")
+        if (operation == "reduce")
         {
             finalAnswer = primeValue - secondValue;
         }
 
-        if (operation == "kerto")
+        if (operation == "multiply")
         {
             finalAnswer = primeValue * secondValue;
         }
 
-        if (operation == "jako")
+        if (operation == "divide")
         {
             finalAnswer = primeValue / secondValue;
         }
