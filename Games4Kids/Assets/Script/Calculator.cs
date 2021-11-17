@@ -5,10 +5,15 @@ using UnityEngine;
 public class Calculator : MonoBehaviour
 {
     int primeValue, secondValue, tempValue, finalAnswer;
+    public Animator AnimatorBack;
+    public Texture TextureSum, TextureReduce, TextureDivide, TextureMultiply;
+    private string TempoOp;
+    public GameObject Canvas;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Canvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -16,7 +21,7 @@ public class Calculator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S)) // summa
         {
-            CalcularFn("sum");
+            CalcularFn("sum");           
         }
 
         if (Input.GetKeyDown(KeyCode.R)) // vähennys
@@ -33,6 +38,48 @@ public class Calculator : MonoBehaviour
         {
             CalcularFn("divide");
         }
+    }
+
+    public void FunctionSum()
+    {
+        TempoOp = "sums";
+        NewSection();
+    }
+
+    public void FunctionReduce()
+    {
+        TempoOp = "reduces";
+        NewSection();
+    }
+
+    public void FunctionDivide()
+    {
+        TempoOp = "divides";
+        NewSection();
+    }
+
+    public void FunctionMultiply()
+    {
+        TempoOp = "multiples";
+        NewSection();
+    }
+
+    private void NewSection()
+    {
+        AnimatorBack = GameObject.Find("Background").GetComponent<Animator>();
+        AnimatorBack.Play("Begin");
+    }
+
+    public void AmoveCamera()
+    {
+        GameObject.Find("Main Camera").transform.position = new Vector3(20f, 0f, -10f);
+
+        if (TempoOp == "sums") {        GameObject.Find("BackgroundAfter").GetComponent<Renderer>().material.mainTexture = TextureSum; }
+        if (TempoOp == "reduces") {     GameObject.Find("BackgroundAfter").GetComponent<Renderer>().material.mainTexture = TextureReduce; }
+        if (TempoOp == "divides") {     GameObject.Find("BackgroundAfter").GetComponent<Renderer>().material.mainTexture = TextureDivide; }
+        if (TempoOp == "multiples") {   GameObject.Find("BackgroundAfter").GetComponent<Renderer>().material.mainTexture = TextureMultiply; }
+
+        Canvas.SetActive(true);
     }
 
     public void CalcularFn(string operation)
