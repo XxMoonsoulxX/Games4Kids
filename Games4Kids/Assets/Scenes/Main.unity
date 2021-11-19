@@ -706,6 +706,9 @@ MonoBehaviour:
   Right_Answer_2: {fileID: 100955666}
   Right_Answer_3: {fileID: 1874753419}
   Apple: {fileID: 8021787185657908749, guid: 8f2405fffaab2ff45b25d6eec7bc57aa, type: 3}
+  Alt1: {fileID: 1775714840}
+  Alt2: {fileID: 1541694242}
+  Alt3: {fileID: 253343267}
   AudioComponent: {fileID: 296137208}
   SoundYes: {fileID: 8300000, guid: 42d5c2bd7a5a195428e0d21e548b8405, type: 3}
   SoundNo: {fileID: 8300000, guid: a41e6459ab53db440a9667672112cdb7, type: 3}

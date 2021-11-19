@@ -13,6 +13,9 @@ public class Calculator : MonoBehaviour
     private string TempoOp, VarSign;
     public GameObject Canvas, Right_Answer_1, Right_Answer_2, Right_Answer_3;
     public Transform Apple;
+    public Button Alt1, Alt2, Alt3; // Buttons and drag and drop in Unity
+
+    //private const float
 
     public AudioSource AudioComponent;
     public AudioClip SoundYes, SoundNo;
@@ -20,6 +23,7 @@ public class Calculator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         Canvas.SetActive(false);
         GameObject.Find("Main Camera").transform.position = new Vector3(0f, 0f, -10f);
         points = 0;
@@ -225,7 +229,9 @@ public class Calculator : MonoBehaviour
         if ( Alt_1.text == finalAnswer.ToString())
         {
             Right_Answer_1.GetComponent<Image>().sprite = SpriteYes;
+            Alt1.GetComponent<Button>().interactable = false;    // Set the button false so you can't smash right answer and get points
             GotItRight();
+            //Debug.Log("Alt1 Action works?");
         }
         else
         {
@@ -239,7 +245,9 @@ public class Calculator : MonoBehaviour
         if (Alt_2.text == finalAnswer.ToString())
         {
             Right_Answer_2.GetComponent<Image>().sprite = SpriteYes;
+            Alt2.GetComponent<Button>().interactable = false;    // Set the button false so you can't smash right answer and get points
             GotItRight();
+            //Debug.Log("Alt2 Action works?");
         }
         else
         {
@@ -253,7 +261,9 @@ public class Calculator : MonoBehaviour
         if (Alt_3.text == finalAnswer.ToString())
         {
             Right_Answer_3.GetComponent<Image>().sprite = SpriteYes;
+            Alt3.GetComponent<Button>().interactable = false;       // Set the button false so you can't smash right answer and get points
             GotItRight();
+            //Debug.Log("Alt3 Action works?"); 
         }
         else
         {
@@ -268,7 +278,11 @@ public class Calculator : MonoBehaviour
         Right_Answer_2.GetComponent<Image>().sprite = SpriteTransparent;
         Right_Answer_3.GetComponent<Image>().sprite = SpriteTransparent;
 
-        Answer_Place.text = "?";        
+        Answer_Place.text = "?";
+
+        Alt1.GetComponent<Button>().interactable = true;        // Set the buttons back to true
+        Alt2.GetComponent<Button>().interactable = true;
+        Alt3.GetComponent<Button>().interactable = true;
     }
     
     public void GotItWrong()
@@ -282,7 +296,7 @@ public class Calculator : MonoBehaviour
         Answer_Place.text = finalAnswer.ToString();
         points = points + 1;
 
-        Instantiate(Apple , new Vector3( 12f+ (points-1)*1f, 4.3f, -1f ) , Quaternion.identity);
+        Instantiate(Apple , new Vector3( 12f+ (points-1)*1f, 4.3f, -1f ) , Quaternion.identity);        
 
         AudioComponent.clip = SoundYes;
         AudioComponent.Play();
@@ -294,5 +308,5 @@ public class Calculator : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         CalcularFn(VarSign);        
-    }
+    }    
 }
