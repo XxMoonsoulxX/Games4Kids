@@ -28,7 +28,7 @@ public class Calculator : MonoBehaviour
         Canvas.SetActive(false);
         GameObject.Find("Main Camera").transform.position = new Vector3(0f, 0f, -10f);
         points = 0;
-    }
+    }   
 
     // Update is called once per frame
     void Update()

@@ -17,7 +17,7 @@ public class SceneSwitch : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quit the game!");
+        //Debug.Log("Quit the game!");
         Application.Quit();
     }
 
