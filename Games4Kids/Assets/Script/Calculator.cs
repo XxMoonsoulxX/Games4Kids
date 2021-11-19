@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Calculator : MonoBehaviour
 {
@@ -289,12 +290,22 @@ public class Calculator : MonoBehaviour
     {
         AudioComponent.clip = SoundNo;
         AudioComponent.Play();
+        points = points - 1;
+        if (points <= 0)
+        {
+            points = 0;
+        }
     }
 
     public void GotItRight()
     {
         Answer_Place.text = finalAnswer.ToString();
         points = points + 1;
+
+        if (points == 10)
+        {
+            SceneManager.LoadScene(1);
+        }
 
         Instantiate(Apple , new Vector3( 12f+ (points-1)*1f, 4.3f, -1f ) , Quaternion.identity);        
 
